@@ -1,26 +1,22 @@
 import 'dart:convert';
-import 'package:http/http.dart' as http; 
+
 import 'package:flutter/material.dart';
-// import 'package:flutter_test_folder_structure/screens/home.dart';
+import 'package:http/http.dart' as http;
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatefulWidget {
+class Home extends StatefulWidget {
 
   @override
-  _MyAppState createState() => _MyAppState();
+  _HomeState createState() => _HomeState();
 }
 
-class _MyAppState extends State<MyApp> {
-  
+class _HomeState extends State<Home> {
+
   final url = 'https://jsonplaceholder.typicode.com/users';
   var users = [];
 
   void getUserData() async {
     try{
-      var response = await http.get(Uri('jsonplaceholder.typicode.com', 'users'));
+      var response = await http.get(Uri.parse(url));
       var jsonData = jsonDecode(response.body) as List;
 
       setState(() {
@@ -28,12 +24,6 @@ class _MyAppState extends State<MyApp> {
       });
     }
     catch (err) {}
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getUserData();
   }
 
   @override
