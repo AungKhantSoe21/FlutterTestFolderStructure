@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/routes.dart';
 
 import 'package:flutter_test_folder_structure/screens/login.dart';
 
@@ -11,6 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Login());
+    return MaterialApp(
+      
+      routes: getRoutes(),
+      home: Login());
   }
 }

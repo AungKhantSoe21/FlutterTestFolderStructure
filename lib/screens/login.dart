@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/screens/otp.dart';
 
 class Login extends StatefulWidget {
   static String route = 'Login';
@@ -36,7 +37,9 @@ class _LoginState extends State<Login> {
                   keyboardType: TextInputType.number,
                 ),
               ),
-              ElevatedButton(onPressed: () {}, child: Text('Submit')),
+              ElevatedButton(onPressed: () {
+                Navigator.pushNamed(context, Otp.route);
+              }, child: Text('Submit')),
             ],
           ),
         ),
