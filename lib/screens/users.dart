@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_folder_structure/core/repository/user_api.dart';
 
 class UserView extends StatefulWidget {
+  static String route = 'UserView';
 
   @override
   _UserViewState createState() => _UserViewState();

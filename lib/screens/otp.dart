@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_folder_structure/screens/home.dart';
+
 
 class Otp extends StatefulWidget {
   static String route = 'Otp';
@@ -31,7 +33,9 @@ class _OtpState extends State<Otp> {
                   ),
                 )
               ),
-              Container(child: ElevatedButton(onPressed: () {}, child: Text('Submit'))),
+              Container(child: ElevatedButton(onPressed: () {
+                Navigator.pushNamed(context, Home.route);
+              }, child: Text('Submit'))),
             ],
           ),
         ),

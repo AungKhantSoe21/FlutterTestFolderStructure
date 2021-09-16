@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_folder_structure/routes.dart';
 import 'package:flutter_test_folder_structure/screens/home.dart';
 
 void main() {
@@ -25,6 +26,7 @@ class _MyAppState extends State<MyApp> {
         )
       ),
       home: Home(),
+      routes: getRoutes(),
     );
   }
 }
