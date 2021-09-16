@@ -4,14 +4,15 @@ class Recipe {
   final double rating;
   final String totalTime;
 
-  Recipe( this.name, this.images, this.rating, this.totalTime);
+  Recipe(this.name, this.images, this.rating, this.totalTime);
 
   factory Recipe.fromJson(dynamic json) {
     return Recipe(
         json['name'] as String,
         json['images'][0]['hostedLargeUrl'] as String,
         json['rating'] as double,
-        json['totalTime'] as String);
+        json['totalTime'] as String
+      );
   }
 
   static List<Recipe> recipesFromSnapshot(List snapshot) {

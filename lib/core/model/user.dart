@@ -1,13 +1,16 @@
-// class User {
-//   String title, text;
+class User {
+  String name;
+  String email;
+  String username;
 
-//   User(
-//     this.title,
-//     this.text,
-//   );
+  User(
+    this.name,
+    this.email,
+    this.username
+  );
 
-//   User.fromJson(Map<String, dynamic>json) {
-//     title = json[title];
-//     text = json[text];
-//   }
-// }
+  @override
+  String toString(){
+    return 'User {name: $name, email: $email, username: $username}';
+  }
+}
