@@ -1,3 +1,5 @@
+import './screens/products.dart';
+
 import '/screens/otp.dart';
 import '/screens/login.dart';
 import '/screens/home.dart';
@@ -9,5 +11,6 @@ getRoutes() {
     Login.route: (context) => Login(),
     Home.route: (context) => Home(),
     UserView.route: (context) => UserView(),
+    ProductsOverviewScreen.route: (context) => ProductsOverviewScreen(),
   };
 }

@@ -6,7 +6,7 @@ import '../widgets/products_grid.dart';
 import 'login.dart';
 
 class ProductsOverviewScreen extends StatefulWidget {
-  // static String route = 'ProductsOverviewScreen';
+  static String route = 'ProductsOverviewScreen';
 
   @override
   _ProductsOverviewScreenState createState() => _ProductsOverviewScreenState();

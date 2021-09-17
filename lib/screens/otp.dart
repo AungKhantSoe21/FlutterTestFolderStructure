@@ -43,6 +43,7 @@ class _OtpState extends State<Otp> {
                   decoration: InputDecoration(
                     hintText: 'Enter OTP code'
                   ),
+                  keyboardType: TextInputType.number,
                 )
               ),
               Container(child: ElevatedButton(onPressed: () {

@@ -48,9 +48,7 @@ class _UserViewState extends State<UserView> {
                 onPressed: () => Navigator.pushNamed(context, Home.route),
                 icon: Icon(Icons.restaurant)),
             IconButton(
-                onPressed: () => Navigator.push(context, 
-                  MaterialPageRoute(builder: (context) => ProductsOverviewScreen())
-                ),
+                onPressed: () => Navigator.pushNamed(context, ProductsOverviewScreen.route),
                 icon: Icon(Icons.production_quantity_limits)),
             IconButton(
                 onPressed: () => Navigator.pushNamed(context, Login.route),

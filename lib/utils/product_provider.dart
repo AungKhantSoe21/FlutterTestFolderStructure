@@ -24,16 +24,18 @@ class Products with ChangeNotifier {
       'A Pan',
       'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
     ),
+    Product(
+      'p5',
+      'A Test',
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Cast-Iron-Pan.jpg/1024px-Cast-Iron-Pan.jpg',
+    ),
   ];
-
-  static var route;
 
   List<Product> get items {
     return [..._items];
   }
 
   void addProduct() {
-    // _items.add(value);
     notifyListeners();
   }
 }
