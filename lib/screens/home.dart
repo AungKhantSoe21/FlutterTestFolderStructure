@@ -49,12 +49,10 @@ class _HomeState extends State<Home> {
                 onPressed: () => Navigator.pushNamed(context, UserView.route),
                 icon: Icon(Icons.account_box)),
             IconButton(
-                onPressed: () => Navigator.push(context, 
-                  MaterialPageRoute(builder: (context) => ProductsOverviewScreen())
-                ),
+                onPressed: () => Navigator.pushNamed(context, ProductsOverviewScreen.route),
                 icon: Icon(Icons.production_quantity_limits)),
             IconButton(
-                onPressed: () => Navigator.pushNamed(context, Home.route),
+                onPressed: () => Navigator.pushNamed(context, Login.route),
                 icon: Icon(Icons.logout_outlined)),
           ],
         ),
