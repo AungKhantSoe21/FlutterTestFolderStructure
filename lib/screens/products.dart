@@ -13,28 +13,27 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(Icons.production_quantity_limits),
-            ],
-          ),
-          actions: [
-            IconButton(
-                onPressed: () => Navigator.pushNamed(context, Home.route),
-                icon: Icon(Icons.restaurant)),
-            IconButton(
-                onPressed: () => Navigator.pushNamed(context, UserView.route),
-                icon: Icon(Icons.account_box)),
-            IconButton(
-                onPressed: () => Navigator.pushNamed(context, Login.route),
-                icon: Icon(Icons.logout_outlined)),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.production_quantity_limits),
           ],
+        ),
+        actions: [
+          IconButton(
+              onPressed: () => Navigator.pushNamed(context, Home.route),
+              icon: Icon(Icons.restaurant)),
+          IconButton(
+              onPressed: () => Navigator.pushNamed(context, UserView.route),
+              icon: Icon(Icons.account_box)),
+          IconButton(
+              onPressed: () => Navigator.pushNamed(context, Login.route),
+              icon: Icon(Icons.logout_outlined)),
+        ],
       ),
       body: ProductsGrid(),
     );
