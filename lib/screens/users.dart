@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_folder_structure/core/repository/user_api.dart';
+import 'package:flutter_test_folder_structure/screens/home.dart';
+import 'package:flutter_test_folder_structure/screens/login.dart';
+import 'package:flutter_test_folder_structure/screens/products.dart';
 
 class UserView extends StatefulWidget {
   static String route = 'UserView';
@@ -37,11 +40,22 @@ class _UserViewState extends State<UserView> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.account_balance),
-              SizedBox(width: 15,),
-              Text("Users")
+              Icon(Icons.account_box),
             ],
           ),
+          actions: [
+            IconButton(
+                onPressed: () => Navigator.pushNamed(context, Home.route),
+                icon: Icon(Icons.restaurant)),
+            IconButton(
+                onPressed: () => Navigator.push(context, 
+                  MaterialPageRoute(builder: (context) => ProductsOverviewScreen())
+                ),
+                icon: Icon(Icons.production_quantity_limits)),
+            IconButton(
+                onPressed: () => Navigator.pushNamed(context, Login.route),
+                icon: Icon(Icons.logout_outlined)),
+          ],
         ),
       body: _isLoading
         ? Center(

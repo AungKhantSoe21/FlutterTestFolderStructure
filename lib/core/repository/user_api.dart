@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_test_folder_structure/core/model/user.dart';
 
+// ignore: non_constant_identifier_names
 UserApi() async {
     var uri = Uri.https('jsonplaceholder.typicode.com', 'users');
 

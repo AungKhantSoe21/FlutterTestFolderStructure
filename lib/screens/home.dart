@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_folder_structure/core/model/recipe.dart';
 import 'package:flutter_test_folder_structure/core/repository/recipe_api.dart';
+import 'package:flutter_test_folder_structure/screens/products.dart';
+import 'package:flutter_test_folder_structure/utils/product_provider.dart';
 import '/screens/login.dart';
 import 'package:flutter_test_folder_structure/screens/users.dart';
 import 'package:flutter_test_folder_structure/widgets/recipe_cart.dart';
@@ -40,19 +42,20 @@ class _HomeState extends State<Home> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(Icons.restaurant_menu),
-              SizedBox(
-                width: 15,
-              ),
-              Text("Food Recipe")
             ],
           ),
           actions: [
             IconButton(
                 onPressed: () => Navigator.pushNamed(context, UserView.route),
-                icon: Icon(Icons.account_balance)),
+                icon: Icon(Icons.account_box)),
             IconButton(
-                onPressed: () => Navigator.pushNamed(context, Login.route),
-                icon: Icon(Icons.logout_outlined))
+                onPressed: () => Navigator.push(context, 
+                  MaterialPageRoute(builder: (context) => ProductsOverviewScreen())
+                ),
+                icon: Icon(Icons.production_quantity_limits)),
+            IconButton(
+                onPressed: () => Navigator.pushNamed(context, Home.route),
+                icon: Icon(Icons.logout_outlined)),
           ],
         ),
         body: _isLoading

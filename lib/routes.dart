@@ -8,6 +8,6 @@ getRoutes() {
     Otp.route: (context) => Otp(),
     Login.route: (context) => Login(),
     Home.route: (context) => Home(),
-    UserView.route: (context) => UserView()
+    UserView.route: (context) => UserView(),
   };
 }

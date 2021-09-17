@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_folder_structure/screens/home.dart';
+import 'package:flutter_test_folder_structure/screens/login.dart';
 
 
 class Otp extends StatefulWidget {
@@ -11,6 +12,17 @@ class Otp extends StatefulWidget {
 }
 
 class _OtpState extends State<Otp> {
+  final otpController = TextEditingController();
+
+  submitOtp() {
+    if(otpController.text == '123456') {
+      Navigator.pushNamed(context, Home.route);
+    }
+    else {
+      Navigator.pushNamed(context, Login.route);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +31,6 @@ class _OtpState extends State<Otp> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0.0,
-          actions: [],
         ),
         body: Center(
           child: Column(
@@ -28,13 +39,14 @@ class _OtpState extends State<Otp> {
               Container(
                 width: 500,
                 child: TextField(
+                  controller: otpController,
                   decoration: InputDecoration(
                     hintText: 'Enter OTP code'
                   ),
                 )
               ),
               Container(child: ElevatedButton(onPressed: () {
-                Navigator.pushNamed(context, Home.route);
+                submitOtp();
               }, child: Text('Submit'))),
             ],
           ),
