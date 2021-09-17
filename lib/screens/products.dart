@@ -27,13 +27,16 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
           actions: [
             IconButton(
                 onPressed: () => Navigator.pushNamed(context, Home.route),
-                icon: Icon(Icons.restaurant)),
+                icon: Icon(Icons.restaurant)
+            ),
             IconButton(
                 onPressed: () => Navigator.pushNamed(context, UserView.route),
-                icon: Icon(Icons.account_box)),
+                icon: Icon(Icons.account_box)
+            ),
             IconButton(
                 onPressed: () => Navigator.pushNamed(context, Login.route),
-                icon: Icon(Icons.logout_outlined)),
+                icon: Icon(Icons.logout_outlined)
+            ),
           ],
       ),
       body: ProductsGrid(),
