@@ -3,6 +3,7 @@ import 'package:flutter_test_folder_structure/core/repository/user_api.dart';
 import 'package:flutter_test_folder_structure/screens/home.dart';
 import 'package:flutter_test_folder_structure/screens/login.dart';
 import 'package:flutter_test_folder_structure/screens/products.dart';
+import 'package:flutter_test_folder_structure/widgets/circular_loading.dart';
 
 class UserView extends StatefulWidget {
   static String route = 'UserView';
@@ -56,9 +57,7 @@ class _UserViewState extends State<UserView> {
           ],
         ),
       body: _isLoading
-        ? Center(
-          child: CircularProgressIndicator(),
-        )
+        ? CircularLoading()
         : ListView.builder(
           itemCount: _users.length,
           itemBuilder: (context, i) {

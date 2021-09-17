@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test_folder_structure/core/model/recipe.dart';
 import 'package:flutter_test_folder_structure/core/repository/recipe_api.dart';
 import 'package:flutter_test_folder_structure/screens/products.dart';
-import 'package:flutter_test_folder_structure/utils/product_provider.dart';
+
 import '/screens/login.dart';
 import 'package:flutter_test_folder_structure/screens/users.dart';
 import 'package:flutter_test_folder_structure/widgets/recipe_cart.dart';
+import 'package:flutter_test_folder_structure/widgets/circular_loading.dart';
 
 class Home extends StatefulWidget {
   static String route = 'Home';
@@ -49,7 +50,8 @@ class _HomeState extends State<Home> {
                 onPressed: () => Navigator.pushNamed(context, UserView.route),
                 icon: Icon(Icons.account_box)),
             IconButton(
-                onPressed: () => Navigator.pushNamed(context, ProductsOverviewScreen.route),
+                onPressed: () =>
+                    Navigator.pushNamed(context, ProductsOverviewScreen.route),
                 icon: Icon(Icons.production_quantity_limits)),
             IconButton(
                 onPressed: () => Navigator.pushNamed(context, Login.route),
@@ -57,9 +59,7 @@ class _HomeState extends State<Home> {
           ],
         ),
         body: _isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
+            ? CircularLoading()
             : ListView.builder(
                 itemCount: _recipes.length,
                 itemBuilder: (context, i) {
