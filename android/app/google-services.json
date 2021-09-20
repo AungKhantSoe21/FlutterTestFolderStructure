@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "965912066513",
+    "firebase_url": "https://flutter-update-2bea8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "flutter-update-2bea8",
+    "storage_bucket": "flutter-update-2bea8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965912066513:android:f0cb336678b778f28b88f0",
+        "android_client_info": {
+          "package_name": "com.example.flutter_test_folder_structure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965912066513-se5o0bahh6l24vi4uuav58llj9ku576g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAeE1WQ7OjK-3vXk1fi6Oy9aFF0RT7gv0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965912066513-se5o0bahh6l24vi4uuav58llj9ku576g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

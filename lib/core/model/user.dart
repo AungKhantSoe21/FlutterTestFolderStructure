@@ -1,9 +1,11 @@
 class User {
+  int id;
   String name;
   String email;
   String username;
 
   User(
+    this.id,
     this.name,
     this.email,
     this.username
@@ -11,6 +13,6 @@ class User {
 
   @override
   String toString(){
-    return 'User {name: $name, email: $email, username: $username}';
+    return 'User {id: $id ,name: $name, email: $email, username: $username}';
   }
 }

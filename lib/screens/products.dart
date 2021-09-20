@@ -1,6 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_folder_structure/screens/home.dart';
-import 'package:flutter_test_folder_structure/screens/users.dart';
+import '/screens/home.dart';
+import '/screens/users.dart';
 
 import '../widgets/products_grid.dart';
 import 'login.dart';
@@ -13,6 +14,15 @@ class ProductsOverviewScreen extends StatefulWidget {
 }
 
 class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
+
+  Future<void> signOut() async {
+    try {
+      FirebaseAuth.instance.signOut();
+    } catch (e) {
+      print(e);
+    }
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +41,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               onPressed: () => Navigator.pushNamed(context, UserView.route),
               icon: Icon(Icons.account_box)),
           IconButton(
-              onPressed: () => Navigator.pushNamed(context, Login.route),
+              onPressed: () => signOut().then((value) => Navigator.pushNamed(context, Login.route)),
               icon: Icon(Icons.logout_outlined)),
         ],
       ),

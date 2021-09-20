@@ -1,12 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_folder_structure/core/model/recipe.dart';
-import 'package:flutter_test_folder_structure/core/repository/recipe_api.dart';
-import 'package:flutter_test_folder_structure/screens/products.dart';
-
+import '/core/model/recipe.dart';
+import '/core/repository/recipe_api.dart';
+import '/screens/products.dart';
 import '/screens/login.dart';
-import 'package:flutter_test_folder_structure/screens/users.dart';
-import 'package:flutter_test_folder_structure/widgets/recipe_cart.dart';
-import 'package:flutter_test_folder_structure/widgets/circular_loading.dart';
+import '/screens/users.dart';
+import '/widgets/recipe_cart.dart';
 
 class Home extends StatefulWidget {
   static String route = 'Home';
@@ -35,6 +34,14 @@ class _HomeState extends State<Home> {
     print(_recipes);
   }
 
+  Future<void> signOut() async {
+    try {
+      FirebaseAuth.instance.signOut();
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,16 +57,17 @@ class _HomeState extends State<Home> {
                 onPressed: () => Navigator.pushNamed(context, UserView.route),
                 icon: Icon(Icons.account_box)),
             IconButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, ProductsOverviewScreen.route),
+                onPressed: () => Navigator.pushNamed(context, ProductsOverviewScreen.route),
                 icon: Icon(Icons.production_quantity_limits)),
             IconButton(
-                onPressed: () => Navigator.pushNamed(context, Login.route),
+                onPressed: () => signOut().then((value) => Navigator.pushNamed(context, Login.route)),
                 icon: Icon(Icons.logout_outlined)),
           ],
         ),
         body: _isLoading
-            ? CircularLoading()
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
             : ListView.builder(
                 itemCount: _recipes.length,
                 itemBuilder: (context, i) {

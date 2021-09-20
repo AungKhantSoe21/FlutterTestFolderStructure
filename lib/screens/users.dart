@@ -1,9 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test_folder_structure/core/repository/user_api.dart';
-import 'package:flutter_test_folder_structure/screens/home.dart';
-import 'package:flutter_test_folder_structure/screens/login.dart';
-import 'package:flutter_test_folder_structure/screens/products.dart';
-import 'package:flutter_test_folder_structure/widgets/circular_loading.dart';
+import '/core/repository/user_api.dart';
+import '/screens/home.dart';
+import '/screens/login.dart';
+import '/screens/products.dart';
 
 class UserView extends StatefulWidget {
   static String route = 'UserView';
@@ -13,6 +13,14 @@ class UserView extends StatefulWidget {
 }
 
 class _UserViewState extends State<UserView> {
+
+  Future<void> signOut() async {
+    try {
+      FirebaseAuth.instance.signOut();
+    } catch (e) {
+      print(e);
+    }
+  }
 
   late List _users;
   bool _isLoading = true;
@@ -52,12 +60,14 @@ class _UserViewState extends State<UserView> {
                 onPressed: () => Navigator.pushNamed(context, ProductsOverviewScreen.route),
                 icon: Icon(Icons.production_quantity_limits)),
             IconButton(
-                onPressed: () => Navigator.pushNamed(context, Login.route),
+                onPressed: () => signOut().then((value) => Navigator.pushNamed(context, Login.route)),
                 icon: Icon(Icons.logout_outlined)),
           ],
         ),
       body: _isLoading
-        ? CircularLoading()
+        ? Center(
+          child: CircularProgressIndicator(),
+        )
         : ListView.builder(
           itemCount: _users.length,
           itemBuilder: (context, i) {

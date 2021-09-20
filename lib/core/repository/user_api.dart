@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_test_folder_structure/core/model/user.dart';
+import '/core/model/user.dart';
 
 // ignore: non_constant_identifier_names
 UserApi() async {
@@ -12,9 +12,11 @@ UserApi() async {
     List users = [];
 
     for (var i in data) {
-      User user = User(i['name'], i['email'], i['username']);
+      User user = User(i['id'], i['name'], i['email'], i['username']);
       users.add(user);
     }
+
+    print(users.length);
 
     return users;
 }

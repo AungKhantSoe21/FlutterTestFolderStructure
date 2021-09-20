@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter_test_folder_structure/core/model/recipe.dart';
+import '/core/model/recipe.dart';
 
 class RecipeApi {
   static Future<List<Recipe>> getRecipe() async {

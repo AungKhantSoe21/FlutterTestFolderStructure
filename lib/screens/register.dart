@@ -1,32 +1,33 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import '/screens/home.dart';
-import '/screens/register.dart';
+import 'dart:async';
 
-class Login extends StatefulWidget {
-  static String route = 'Login';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import '/screens/login.dart';
+
+class Register extends StatefulWidget {
+  static String route = "Register";
 
   @override
-  _LoginState createState() => _LoginState();
+  RegisterState createState() => RegisterState();
 }
 
-class _LoginState extends State<Login> {
-
-  final _formKey = GlobalKey<FormState>();
+class RegisterState extends State<Register> {
   final _auth = FirebaseAuth.instance;
+  final _formKey = GlobalKey<FormState>();
+  
+  RegExp emailValidate = RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
   TextEditingController emailTextController = TextEditingController();
   TextEditingController passwordTextController = TextEditingController();
 
-  RegExp emailValidate = RegExp(r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-
-  Future<void> loginUser() async {
+  Future<void> registerUser() async {
     try {
       // ignore: unused_local_variable
-      UserCredential user = await _auth.signInWithEmailAndPassword(
-        email: emailTextController.text,
-        password: passwordTextController.text
-      );
+      UserCredential user = await _auth.createUserWithEmailAndPassword(
+          email: emailTextController.text,
+          password: passwordTextController.text);
+      _auth.currentUser!.sendEmailVerification();
     } catch (e) {
       // ignore: avoid_print
       print(e);
@@ -37,12 +38,12 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: SingleChildScrollView(child: loginForm()),
+        child: SingleChildScrollView(child: registerForm()),
       ),
     );
   }
 
-  Widget loginForm() {
+  Widget registerForm() {
     return Form(
       key: _formKey,
       child: Center(
@@ -54,14 +55,14 @@ class _LoginState extends State<Login> {
             SizedBox(
               height: 90,
               child: Text(
-                "Login Form",
+                "Register Form",
                 style: TextStyle(
                   color: Colors.cyan,
                   fontSize: 30
                 ),
               ),
             ),
-            Text("Enter your Email", style: TextStyle(color: Colors.black),),
+            Text("Enter your email", style: TextStyle(color: Colors.black),),
             Container(
               width: MediaQuery.of(context).size.width * 0.8,
               decoration: BoxDecoration(
@@ -77,10 +78,9 @@ class _LoginState extends State<Login> {
                       return 'Invalid Email Address';
                     }
                     return null;
-                  }
-              ),
+                  }),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Text("Enter your password", style: TextStyle(color: Colors.black),),
@@ -107,15 +107,30 @@ class _LoginState extends State<Login> {
             ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    loginUser().then(
-                      (value) => Navigator.pushNamed(context, Home.route)
+                    registerUser().then(
+                      (value) => ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Click verification link at your inbox to complete!'
+                          )
+                        ),
+                      )
                     );
                   }
+                  else{
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text(
+                            'Email already in use!'
+                          )
+                        ),
+                      );
+                  }
                 },
-                child: const Text('Login')),
+                child: const Text('Sign Up')),
             TextButton(
-              onPressed: () => Navigator.pushNamed(context, Register.route),
-              child: Text("Don't have account? Go to Register.")
+              onPressed: () => Navigator.pushNamed(context, Login.route),
+              child: Text("Already registered? Go to Login.")
             )
           ],
         ),
